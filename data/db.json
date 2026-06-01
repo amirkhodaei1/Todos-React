@@ -1,0 +1,240 @@
+{
+  "todos": [],
+  "users": [
+    {
+      "id": 1,
+      "username": "LlamaFan42",
+      "email": "llamafan42@example.com",
+      "age": 18,
+      "password": "password123",
+      "address": {
+        "country": "Iran",
+        "city": "Tehran",
+        "street": "Khorasan St"
+      },
+      "products": [
+        {
+          "name": "Product A",
+          "price": 100
+        },
+        {
+          "name": "Product B",
+          "price": 200
+        },
+        {
+          "name": "Product C",
+          "price": 300
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "username": "CodeWhiz88",
+      "email": "codewhiz88@example.com",
+      "age": 25,
+      "password": "password456",
+      "address": {
+        "country": "France",
+        "city": "Paris",
+        "street": "Champs-Élysées"
+      },
+      "products": [
+        {
+          "name": "Product D",
+          "price": 400
+        },
+        {
+          "name": "Product E",
+          "price": 500
+        },
+        {
+          "name": "Product F",
+          "price": 600
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "username": "TechNoLogic",
+      "email": "technologic@example.com",
+      "age": 30,
+      "password": "admin",
+      "address": {
+        "country": "USA",
+        "city": "New York",
+        "street": "5th Avenue"
+      },
+      "products": [
+        {
+          "name": "Product G",
+          "price": 700
+        },
+        {
+          "name": "Product H",
+          "price": 800
+        },
+        {
+          "name": "Product I",
+          "price": 900
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "username": "GameOn22",
+      "email": "gameon22@example.com",
+      "age": 20,
+      "password": "user123",
+      "address": {
+        "country": "Canada",
+        "city": "Toronto",
+        "street": "Yonge St"
+      },
+      "products": [
+        {
+          "name": "Product J",
+          "price": 1000
+        },
+        {
+          "name": "Product Kice",
+          "price": 1100
+        },
+        {
+          "name": "Product L",
+          "price": 1200
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "username": "CryptoKing99",
+      "email": "cryptoking99@example.com",
+      "age": 22,
+      "password": "user456",
+      "address": {
+        "country": "China",
+        "city": "Beijing",
+        "street": "Wangujing"
+      },
+      "products": [
+        {
+          "name": "Product M",
+          "price": 1300
+        },
+        {
+          "name": "Product N",
+          "price": 1400
+        },
+        {
+          "name": "Product O",
+          "price": 1500
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "username": "DigitalDreamer",
+      "email": "digitaldreamer@example.com",
+      "age": 28,
+      "password": "user789",
+      "address": {
+        "country": "Germany",
+        "city": "Berlin",
+        "street": "Kurfürstendamm"
+      },
+      "products": [
+        {
+          "name": "Product P",
+          "price": 1600
+        },
+        {
+          "name": "Product Q",
+          "price": 1700
+        },
+        {
+          "name": "Product R",
+          "price": 1800
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "username": "WebWizard77",
+      "email": "webwizard77@example.com",
+      "age": 35,
+      "password": "user012",
+      "address": {
+        "country": "Australia",
+        "city": "Sydney",
+        "street": "Bondi Beach"
+      },
+      "products": [
+        {
+          "name": "Product S",
+          "price": 1900
+        },
+        {
+          "name": "Product T",
+          "price": 2000
+        },
+        {
+          "name": "Product U",
+          "price": 2100
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "username": "NetworkNinja",
+      "email": "networkninja@example.com",
+      "age": 40,
+      "password": "user345",
+      "address": {
+        "country": "Japan",
+        "city": "Tokyo",
+        "street": "Shibuya"
+      },
+      "products": [
+        {
+          "name": "Product BB",
+          "price": 2800
+        },
+        {
+          "name": "Product CC",
+          "price": 2900
+        },
+        {
+          "name": "Product DD",
+          "price": 3000
+        }
+      ]
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "title": "Comment 1",
+      "userId": 8
+    },
+    {
+      "id": 2,
+      "title": "Comment 2",
+      "userId": 6
+    },
+    {
+      "id": 3,
+      "title": "Comment 3",
+      "userId": 4
+    },
+    {
+      "id": 4,
+      "title": "Comment 4",
+      "userId": 3
+    },
+    {
+      "id": 5,
+      "title": "Comment 5",
+      "userId": 2
+    }
+  ]
+}
