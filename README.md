@@ -100,23 +100,23 @@ A -->|3. Render UI & Share Cards| N[End User]
 
 ---
 
-### ⚙️ Installation & Deployment
-## 1. Local Development Setup
+## ⚙️ Installation & Deployment
+### 1. Local Development Setup
 Backend (Python):
 
 Bash
-# Clone the repository
+### Clone the repository
 git clone https://github.com/amirkhodaei1/smart_chat_bot.git
 cd smart_chat_bot/backend
 
-# Create and activate virtual environment
+### Create and activate virtual environment
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-# Install dependencies
+### Install dependencies
 pip install -r requirements.txt
 
-# Create a .env file for your API keys
+### Create a .env file for your API keys
 echo "GAPGPT_API_KEY=your_api_key_here" > .env
 
 # Run the Flask server
