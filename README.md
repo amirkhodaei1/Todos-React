@@ -100,24 +100,52 @@ A -->|3. Render UI & Share Cards| N[End User]
 
 ---
 
-# ⚙️ Installation & Deployment
-
-Hakim is a full-stack AI application composed of two independent but connected components:
-
-- 📱 Flutter Mobile Application (Frontend)
-- 🧠 Python Flask API Server (Backend)
-
-This section explains how to configure, run, and deploy the project in different environments.
-
----
-
-# 🚀 Local Development Setup
-
-## 1. Clone Repository
-
-First, clone the repository:
-
-```bash
+🚀 Installation
+Clone Repository
 git clone https://github.com/amirkhodaei1/smart_chat_bot.git
 
 cd smart_chat_bot
+Flutter Setup
+flutter pub get
+
+flutter run
+Backend Setup
+cd backend
+
+pip install -r requirements.txt
+
+python app.py
+⚙ Environment Variables
+
+Create a .env file inside the backend directory:
+
+API_KEY=YOUR_API_KEY
+MODEL_NAME=YOUR_MODEL
+BASE_URL=YOUR_ENDPOINT
+🎯 Design Goals
+Fast and responsive user experience
+Maintainable architecture
+AI-first workflow
+Clean separation of frontend and backend
+Production-ready deployment
+Extensible codebase
+🔮 Roadmap
+Advanced Quran Search
+Verse Cross-Referencing
+Multi-Model AI Support
+User Accounts
+Cloud Synchronization
+Voice Conversations
+Offline Mode
+Enhanced Share Templates
+🤝 Contributing
+
+Contributions, feature requests, and bug reports are welcome.
+
+Feel free to open an issue or submit a pull request.
+
+📜 License
+
+This project is licensed under the MIT License.
+
+<p align="center"> <b>Hakim</b><br> Where Artificial Intelligence Meets Quranic Wisdom. </p>
