@@ -101,23 +101,21 @@ A -->|3. Render UI & Share Cards| N[End User]
 ---
 
 ## ⚙️ Installation & Deployment
-### 1. Local Development Setup
-Backend (Python):
 
-Bash
-### Clone the repository
+Hakim consists of two main components:
+
+- **Flutter Mobile Application**
+- **Python Flask Backend API**
+
+Follow the steps below to run the project locally.
+
+---
+
+# 🖥️ 1. Local Development Setup
+
+## 📥 Clone Repository
+
+```bash
 git clone https://github.com/amirkhodaei1/smart_chat_bot.git
-cd smart_chat_bot/backend
 
-### Create and activate virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-### Install dependencies
-pip install -r requirements.txt
-
-### Create a .env file for your API keys
-echo "GAPGPT_API_KEY=your_api_key_here" > .env
-
-# Run the Flask server
-python app.py
+cd smart_chat_bot
