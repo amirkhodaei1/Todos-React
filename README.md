@@ -75,20 +75,20 @@ The AI extracts the specific Surah and Ayah numbers from the context. Hakim uses
 flowchart TD
 
 A[Flutter Mobile Application] -->|1. User Query + Session ID| B[API Gateway Layer]
-B --> C[REST API (Flask)]
+B --> C[Flask REST API]
 
-subgraph Backend Infrastructure
+subgraph Backend_Infrastructure [Backend Infrastructure]
     C --> D[Session Manager]
     C --> E[TF-IDF Retrieval Engine]
     
-    D -->|Fetch History| F[(SQLite - WAL Mode)]
-    E -->|Retrieve Context| G[(Knowledge Base)]
+    D --> F[(SQLite - WAL Mode)]
+    E --> G[(Knowledge Base)]
     
     F --> H[Prompt Orchestrator]
     G --> H
-    H -->|Strict System Prompt| I[LLM Gateway]
+    H --> I[LLM Gateway]
     
-    I -->|Raw AI Output| J[Response Validator]
+    I --> J[Response Validator]
     J --> K[JSON Sanitizer / Regex]
     K --> L[Schema Enforcer & Char Limits]
     L --> M[Audio Metadata Extractor]
