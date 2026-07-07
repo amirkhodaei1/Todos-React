@@ -7,13 +7,13 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Flutter-3.x-02569B?style=for-the-badge&logo=flutter&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Dart-3.x-0175C2?style=for-the-badge&logo=dart&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Flask-3.x-000000?style=for-the-badge&logo=flask&logoColor=white"/>
-  <img src="https://img.shields.io/badge/GetX-State_Management-8A2BE2?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/SQLite-WAL_Enabled-003B57?style=for-the-badge&logo=sqlite&logoColor=white"/>
-  <img src="https://img.shields.io/badge/AI_Assisted-90%25-8A2BE2?style=for-the-badge"/>
+  <img src="[https://img.shields.io/badge/Flutter-3.x-02569B?style=for-the-badge&logo=flutter&logoColor=white](https://img.shields.io/badge/Flutter-3.x-02569B?style=for-the-badge&logo=flutter&logoColor=white)"/>
+  <img src="[https://img.shields.io/badge/Dart-3.x-0175C2?style=for-the-badge&logo=dart&logoColor=white](https://img.shields.io/badge/Dart-3.x-0175C2?style=for-the-badge&logo=dart&logoColor=white)"/>
+  <img src="[https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)"/>
+  <img src="[https://img.shields.io/badge/Flask-3.x-000000?style=for-the-badge&logo=flask&logoColor=white](https://img.shields.io/badge/Flask-3.x-000000?style=for-the-badge&logo=flask&logoColor=white)"/>
+  <img src="[https://img.shields.io/badge/GetX-State_Management-8A2BE2?style=for-the-badge](https://img.shields.io/badge/GetX-State_Management-8A2BE2?style=for-the-badge)"/>
+  <img src="[https://img.shields.io/badge/SQLite-WAL_Enabled-003B57?style=for-the-badge&logo=sqlite&logoColor=white](https://img.shields.io/badge/SQLite-WAL_Enabled-003B57?style=for-the-badge&logo=sqlite&logoColor=white)"/>
+  <img src="[https://img.shields.io/badge/AI_Assisted-90%25-8A2BE2?style=for-the-badge](https://img.shields.io/badge/AI_Assisted-90%25-8A2BE2?style=for-the-badge)"/>
 </p>
 
 ---
@@ -65,215 +65,34 @@ Instead of relying on heavy and expensive vector databases (like Pinecone or Mil
 * Injects the highest-scoring context directly into the LLM prompt.
 
 ### 5. Tanzil Audio Link Generator
-The AI extracts the specific Surah and Ayah numbers from the context. Hakim uses a dedicated regex pipeline to format this into a valid 6-digit standard (`SSSVVV`) and dynamically generates a direct audio link to the Tanzil network (e.g., `https://tanzil.net/res/audio/parhizgar/002255.mp3`).
+The AI extracts the specific Surah and Ayah numbers from the context. Hakim uses a dedicated regex pipeline to format this into a valid 6-digit standard (`SSSVVV`) and dynamically generates a direct audio link to the Tanzil network (e.g., `[https://tanzil.net/res/audio/parhizgar/002255.mp3](https://tanzil.net/res/audio/parhizgar/002255.mp3)`).
 
 ---
 
 ## 🏗 System Architecture & Data Flow
 
-# High-Level Architecture
-
 ```mermaid
 flowchart TD
 
-A[Flutter Mobile Application]
-A --> B[Repository Layer]
-B --> C[API Service]
-C --> D[REST API]
+A[Flutter Mobile Application] -->|1. User Query + Session ID| B[API Gateway Layer]
+B --> C[REST API (Flask)]
 
-D --> E[Flask Backend]
+subgraph Backend Infrastructure
+    C --> D[Session Manager]
+    C --> E[TF-IDF Retrieval Engine]
+    
+    D -->|Fetch History| F[(SQLite - WAL Mode)]
+    E -->|Retrieve Context| G[(Knowledge Base)]
+    
+    F --> H[Prompt Orchestrator]
+    G --> H
+    H -->|Strict System Prompt| I[LLM Gateway]
+    
+    I -->|Raw AI Output| J[Response Validator]
+    J --> K[JSON Sanitizer / Regex]
+    K --> L[Schema Enforcer & Char Limits]
+    L --> M[Audio Metadata Extractor]
+end
 
-E --> F[Session Manager]
-E --> G[Retrieval Engine]
-E --> H[Prompt Builder]
-E --> I[LLM Gateway]
-
-G --> J[Knowledge Base]
-F --> K[(SQLite Database)]
-
-J --> H
-K --> H
-
-H --> I
-
-I --> L[Response Validator]
-
-L --> M[JSON Sanitizer]
-L --> N[Schema Validation]
-L --> O[Quran Audio Generator]
-L --> P[Share Card Formatter]
-
-P --> Q[Structured JSON Response]
-
-Q --> A
-
-### 📄 Data Schema: The Application Contract
-To guarantee frontend stability, the backend communicates with the Flutter app using a strictly enforced JSON contract. If the LLM fails to meet this schema, the backend attempts repairs or returns a graceful error.
-
-JSON
-{
-  "status": "success",
-  "data": {
-    "verse_info": {
-      "surah_name": "البقرة",
-      "ayah_number": 255,
-      "audio_url": "[https://tanzil.net/res/audio/parhizgar/002255.mp3](https://tanzil.net/res/audio/parhizgar/002255.mp3)"
-    },
-    "analysis": {
-      "etymology": "Explanation of the root words...",
-      "tafsir_context": "Historical and interpretative context...",
-      "contemporary_bridge": "How this relates to modern life...",
-      "action_plan": [
-        "First practical step",
-        "Second practical step"
-      ]
-    },
-    "share_card": {
-      "title": "آیت الکرسی",
-      "short_summary": "نگاهی عمیق به مفهوم ولایت و قدرت مطلق خداوند در هستی."
-    }
-  }
-}
-
-🔍 Context-Aware Generation
-
-One of the main challenges in AI applications is generating responses without sufficient context.
-
-Hakim improves response quality by introducing a retrieval layer before AI generation.
-
-The system:
-
-Searches the internal knowledge base
-Extracts relevant information
-Adds contextual references to the prompt
-Generates a more focused response
-
-This approach reduces irrelevant outputs and improves consistency.
-
-✍️ Prompt Engineering System
-
-Hakim uses structured prompts instead of simple user queries.
-
-Each AI request contains:
-
-System instructions
-User question
-Retrieved knowledge
-Conversation history
-Required response format
-Content limitations
-
-This allows the backend to receive predictable and application-ready responses.
-
-🛡 AI Response Reliability Layer
-
-Large Language Models can sometimes generate unpredictable outputs.
-
-To solve this challenge, Hakim implements a response processing layer.
-
-The system handles:
-
-Invalid JSON responses
-Markdown formatting issues
-Missing fields
-Text length limitations
-Mobile rendering requirements
-
-Before reaching Flutter, every response is transformed into a stable structure.
-
-🧩 Structured AI Output
-
-Instead of displaying raw AI text, Hakim converts responses into structured sections.
-
-Example:
-
-{
-  "title": "Verse Analysis",
-  "summary": "Structured explanation",
-  "linguistic_analysis": "Word analysis",
-  "reflection": "Spiritual insight",
-  "strategy": "Practical guidance",
-  "audio_url": "Quran recitation link"
-}
-
-This architecture allows Flutter to render:
-
-Analysis cards
-Reflection sections
-Practical recommendations
-Shareable content
-
-without complex frontend processing.
-
-🚀 AI-Assisted Development Workflow
-
-Hakim was developed using an AI-assisted engineering workflow.
-
-Approximately 90% of the implementation process was accelerated through collaboration with AI tools, including:
-
-Architecture planning
-Code generation assistance
-Debugging
-Refactoring
-Documentation improvement
-Algorithm optimization
-Error analysis
-
-However, AI was used as an engineering assistant rather than an autonomous developer.
-
-The final responsibility for:
-
-Architecture decisions
-Code review
-Testing
-Integration
-Performance optimization
-
-remained with the developer.
-
-🛠 Engineering Tasks Accelerated by AI
-Flutter Development
-
-AI assistance was used for:
-
-Designing MVVM-based structures
-Implementing GetX controllers
-Improving widget architecture
-Debugging UI problems
-Optimizing responsive layouts
-Backend Development
-
-AI contributed to:
-
-Flask API organization
-Database handling
-Error management
-JSON processing
-Backend optimization
-Problem Solving
-
-AI-assisted debugging helped solve complex issues such as:
-
-Unstable JSON responses
-API communication failures
-Text overflow problems
-Data formatting challenges
-Mobile rendering limitations
-📚 Development Philosophy
-
-The development process followed a modern AI-enhanced engineering methodology:
-
-Artificial Intelligence increases development speed, but software quality still depends on architecture, validation, testing, and engineering decisions.
-
-Hakim demonstrates how AI can be integrated into professional software development workflows while maintaining human control over system design and reliability.
-
-
-این بخش باعث می‌شود استاد برداشت کند که:
-- فقط یک API صدا نزدی.
-- یک Pipeline طراحی کردی.
-- AI را در معماری نرم‌افزار به‌کار بردی.
-- توسعه با AI را به شکل مهندسی‌شده انجام دادی.
-
-بخش بعدی که پیشنهاد می‌کنم اضافه کنیم:
-**5. Flutter Application Architecture (MVVM + GetX + Repository Pattern)**  
-چون برای درس برنامه‌نویسی موبایل احتمالاً بیشترین امتیاز را می‌گیرد.
+M -->|2. Validated Structured JSON| A
+A -->|3. Render UI & Share Cards| N[End User]
