@@ -123,10 +123,9 @@ hakim/
 │   ├── passenger_wsgi.py
 │   ├── requirements.txt
 │   ├── knowledge.txt
-│   └── database/
-│
-├── docs/
-│   └── screenshots/
+│   ├── env.
+│   └── assistant.db
+│   
 │
 └── README.md
 ```
