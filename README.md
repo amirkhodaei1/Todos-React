@@ -71,30 +71,41 @@ The AI extracts the specific Surah and Ayah numbers from the context. Hakim uses
 
 ## 🏗 System Architecture & Data Flow
 
+# High-Level Architecture
+
 ```mermaid
 flowchart TD
 
-A[Flutter Mobile Application] -->|1. User Query + Session ID| B[API Gateway Layer]
-B --> C[REST API (Flask)]
+A[Flutter Mobile Application]
+A --> B[Repository Layer]
+B --> C[API Service]
+C --> D[REST API]
 
-subgraph Backend Infrastructure
-    C --> D[Session Manager]
-    C --> E[TF-IDF Retrieval Engine]
-    
-    D -->|Fetch History| F[(SQLite - WAL Mode)]
-    E -->|Retrieve Context| G[(Knowledge Base)]
-    
-    F & G --> H[Prompt Orchestrator]
-    H -->|Strict System Prompt| I[LLM Gateway]
-    
-    I -->|Raw AI Output| J[Response Validator]
-    J --> K[JSON Sanitizer / Regex]
-    K --> L[Schema Enforcer & Char Limits]
-    L --> M[Audio Metadata Extractor]
-end
+D --> E[Flask Backend]
 
-M -->|2. Validated Structured JSON| A
-A -->|3. Render UI & Share Cards| N[End User]
+E --> F[Session Manager]
+E --> G[Retrieval Engine]
+E --> H[Prompt Builder]
+E --> I[LLM Gateway]
+
+G --> J[Knowledge Base]
+F --> K[(SQLite Database)]
+
+J --> H
+K --> H
+
+H --> I
+
+I --> L[Response Validator]
+
+L --> M[JSON Sanitizer]
+L --> N[Schema Validation]
+L --> O[Quran Audio Generator]
+L --> P[Share Card Formatter]
+
+P --> Q[Structured JSON Response]
+
+Q --> A
 
 ### 📄 Data Schema: The Application Contract
 To guarantee frontend stability, the backend communicates with the Flutter app using a strictly enforced JSON contract. If the LLM fails to meet this schema, the backend attempts repairs or returns a graceful error.
