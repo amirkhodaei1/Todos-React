@@ -100,52 +100,147 @@ A -->|3. Render UI & Share Cards| N[End User]
 
 ---
 
-🚀 Installation
-Clone Repository
+## 📂 Project Structure
+
+```text
+hakim/
+│
+├── frontend/
+│   ├── lib/
+│   │   ├── models/
+│   │   ├── repositories/
+│   │   ├── services/
+│   │   ├── utils/
+│   │   ├── viewmodels/
+│   │   ├── views/
+│   │   └── main.dart
+│   │
+│   ├── assets/
+│   └── pubspec.yaml
+│
+├── backend/
+│   ├── app.py
+│   ├── passenger_wsgi.py
+│   ├── requirements.txt
+│   ├── knowledge.txt
+│   └── database/
+│
+├── docs/
+│   └── screenshots/
+│
+└── README.md
+```
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+
+* Flutter
+* Dart
+* GetX
+* Screenshot
+* Share Plus
+
+### Backend
+
+* Python
+* Flask
+* SQLite
+* Flask-CORS
+* dotenv
+
+### Infrastructure
+
+* Linux (Ubuntu)
+* cPanel Deployment
+* REST API Architecture
+
+---
+
+## 🚀 Installation
+
+### Clone Repository
+
+```bash
 git clone https://github.com/amirkhodaei1/smart_chat_bot.git
 
 cd smart_chat_bot
-Flutter Setup
+```
+
+### Flutter Setup
+
+```bash
 flutter pub get
 
 flutter run
-Backend Setup
+```
+
+### Backend Setup
+
+```bash
 cd backend
 
 pip install -r requirements.txt
 
 python app.py
-⚙ Environment Variables
+```
 
-Create a .env file inside the backend directory:
+---
 
+## ⚙ Environment Variables
+
+Create a `.env` file inside the backend directory:
+
+```env
 API_KEY=YOUR_API_KEY
 MODEL_NAME=YOUR_MODEL
 BASE_URL=YOUR_ENDPOINT
-🎯 Design Goals
-Fast and responsive user experience
-Maintainable architecture
-AI-first workflow
-Clean separation of frontend and backend
-Production-ready deployment
-Extensible codebase
-🔮 Roadmap
-Advanced Quran Search
-Verse Cross-Referencing
-Multi-Model AI Support
-User Accounts
-Cloud Synchronization
-Voice Conversations
-Offline Mode
-Enhanced Share Templates
-🤝 Contributing
+```
+
+---
+
+## 🎯 Design Goals
+
+* Fast and responsive user experience
+* Maintainable architecture
+* AI-first workflow
+* Clean separation of frontend and backend
+* Production-ready deployment
+* Extensible codebase
+
+---
+
+## 🔮 Roadmap
+
+* Advanced Quran Search
+* Verse Cross-Referencing
+* Multi-Model AI Support
+* User Accounts
+* Cloud Synchronization
+* Voice Conversations
+* Offline Mode
+* Enhanced Share Templates
+
+---
+
+## 🤝 Contributing
 
 Contributions, feature requests, and bug reports are welcome.
 
 Feel free to open an issue or submit a pull request.
 
-📜 License
+---
+
+## 📜 License
 
 This project is licensed under the MIT License.
 
-<p align="center"> <b>Hakim</b><br> Where Artificial Intelligence Meets Quranic Wisdom. </p>
+---
+
+<p align="center">
+<b>Hakim</b><br>
+Where Artificial Intelligence Meets Quranic Wisdom.
+</p>
+
