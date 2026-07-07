@@ -94,17 +94,24 @@ subgraph Backend_Infrastructure [Backend Infrastructure]
     L --> M[Audio Metadata Extractor]
 end
 
+M -->|2. Validated Structured JSON| A
+A -->|3. Render UI & Share Cards| N[End User]
+
 ---
 
-License
+# Clone the repository
+git clone https://github.com/amirkhodaei1/smart_chat_bot.git
+cd smart_chat_bot/backend
 
-This project is released under the MIT License.
+# Create and activate virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-<p align="center">
+# Install dependencies
+pip install -r requirements.txt
 
-Hakim
+# Create a .env file for your API keys
+echo "GAPGPT_API_KEY=your_api_key_here" > .env
 
-Where Artificial Intelligence Meets Quranic Understanding.
-
-</p>
-
+# Run the Flask server
+python app.py
