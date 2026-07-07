@@ -100,8 +100,8 @@ A -->|3. Render UI & Share Cards| N[End User]
 
 ---
 
-⚙️ Installation & Deployment
-1. Local Development Setup
+### ⚙️ Installation & Deployment
+## 1. Local Development Setup
 Backend (Python):
 
 Bash
