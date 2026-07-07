@@ -100,20 +100,22 @@ A -->|3. Render UI & Share Cards| N[End User]
 
 ---
 
-## ⚙️ Installation & Deployment
+# ⚙️ Installation & Deployment
 
-Hakim consists of two main components:
+Hakim is a full-stack AI application composed of two independent but connected components:
 
-- **Flutter Mobile Application**
-- **Python Flask Backend API**
+- 📱 Flutter Mobile Application (Frontend)
+- 🧠 Python Flask API Server (Backend)
 
-Follow the steps below to run the project locally.
+This section explains how to configure, run, and deploy the project in different environments.
 
 ---
 
-# 🖥️ 1. Local Development Setup
+# 🚀 Local Development Setup
 
-## 📥 Clone Repository
+## 1. Clone Repository
+
+First, clone the repository:
 
 ```bash
 git clone https://github.com/amirkhodaei1/smart_chat_bot.git
