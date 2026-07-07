@@ -107,5 +107,4 @@ Hakim
 Where Artificial Intelligence Meets Quranic Understanding.
 
 </p>
-M -->|2. Validated Structured JSON| A
-A -->|3. Render UI & Share Cards| N[End User]
+
