@@ -94,5 +94,18 @@ subgraph Backend_Infrastructure [Backend Infrastructure]
     L --> M[Audio Metadata Extractor]
 end
 
+---
+
+License
+
+This project is released under the MIT License.
+
+<p align="center">
+
+Hakim
+
+Where Artificial Intelligence Meets Quranic Understanding.
+
+</p>
 M -->|2. Validated Structured JSON| A
 A -->|3. Render UI & Share Cards| N[End User]
